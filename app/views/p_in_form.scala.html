@@ -1,0 +1,181 @@
+
+
+<!doctype html>
+<html lang="en">
+    <head>
+            <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+            <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+        <title>Panuwat.com</title>
+    </head>
+    <body>
+        @main()
+
+
+
+<br>
+
+<div class=" container ">
+
+    <div class="col1 alert alert-info ">
+        <form method="post" name="form1" action="/p_hows_form">
+            <div class="row"><div class="col1 " > <h1>&nbsp;&nbsp;&nbsp; เพิ่มข้อมูลสินค้า </h1>  </div> </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <input type="text" name="p_id" id="i_id" class="form-control alert alert-light " onclick="onId()" onchange="onId()" placeholder="ID Product">
+                </div>
+                <div class="col-md-6">
+                    <input type="text"  name="p_name" class="form-control alert alert-light " id="i_name" onclick="onClickk()" onchange="onClickk()" placeholder="NAME Product ">
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="number" value="" name="p_price" id="i_price" onclick="price()" onchange="price()" class="form-control alert alert-light " placeholder="price Product">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" value="" name="p_count" id="i_count" onclick="coult()" onchange="coult()" class="form-control alert alert-light" placeholder="count Product">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" value="" name="p_brand" id="i_ban" onclick="ban()" onchange="ban()" class="form-control alert alert-light" placeholder="brand Product">
+                </div>
+            </div>
+            <div class="row " >
+              <div class="col"> </div>
+                <input type="button" id="i_sub"  class="btn btn-success" onclick="on_SUB()" value="บันทึกข้อมูล" align="canter">&nbsp;
+                <button type="reset" class="btn btn-warning" > Reset </button>
+            </div>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </body>
+</html>
+<script>
+
+function getFocus() {
+    document.getElementById("i_name").focus();
+}
+
+
+    function on_SUB() {
+        var i,n,p,c,b;
+        n =   document.getElementById("i_name").value ;
+        i =   document.getElementById("i_id").value ;
+        p =   document.getElementById("i_price").value ;
+        c =   document.getElementById("i_count").value
+        b =   document.getElementById("i_ban").value ;
+        if( n!="" && i != "" && p != "" && c != "" && b != ""){
+			document.getElementById("i_sub").type = "submit";
+	        }else {
+            if (i == "") {
+                document.getElementById("i_id").focus();
+            }else if(n == "") {
+                document.getElementById("i_name").focus();
+            }else if(p == "") {
+                document.getElementById("i_price").focus();
+            }else if(c == "" ){
+                document.getElementById("i_count").focus();
+            }else if (b == "") {
+                document.getElementById("i_ban").focus();
+            }
+
+        }
+
+
+
+
+    }
+
+function onClickk () {
+
+var n;
+n =   document.getElementById("i_name").value ;
+
+if(n==""){
+    document.getElementById("i_name").className = " form-control alert alert-danger ";
+} else {
+    document.getElementById("i_name").className = " form-control alert alert-light ";
+        }
+}
+
+
+function onId() {
+    var i ;
+    i =   document.getElementById("i_id").value ;
+
+    if(i=="")
+    {
+        document.getElementById("i_id").className = " form-control alert alert-danger ";
+    } else {
+        document.getElementById("i_id").className = " form-control alert alert-light ";
+    }
+
+}
+
+function  price() {
+    var p ;
+    p =   document.getElementById("i_price").value ;
+
+    if(p=="")
+    {
+        document.getElementById("i_price").className = " form-control alert alert-danger ";
+    } else {
+        document.getElementById("i_price").className = " form-control alert alert-light ";
+    }
+
+    }
+
+
+
+    function coult() {
+        var c ;
+        c =   document.getElementById("i_count").value ;
+
+        if(c=="")
+        {
+            document.getElementById("i_count").className = " form-control alert alert-danger ";
+        } else {
+            document.getElementById("i_count").className = " form-control alert alert-light ";
+        }
+
+    }
+    function ban() {
+        var b ;
+        b =   document.getElementById("i_ban").value ;
+
+        if(b=="")
+        {
+            document.getElementById("i_ban").className = " form-control alert alert-danger ";
+        } else {
+            document.getElementById("i_ban").className = " form-control alert alert-light ";
+        }
+
+    }
+
+
+
+
+</script>
