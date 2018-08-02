@@ -3,16 +3,16 @@ package models;
 /**
  * Created by Gvd-Pc on 07/30/18.
  */
-public class detils extends products {
+public class Detail extends products {
 
-    private  String company,type,barcode,volume;
+    private  String company,type,barcode,volume,pic;
 private  int powver;
 
 
-    public detils() {
+    public Detail() {
     }
 
-    public detils(String p_id, String p_name, String p_brand, double price, int count, String company, String type, String barcode, String volume, int powver) {
+    public Detail(String p_id, String p_name, String p_brand, double price, int count, String company, String type, String barcode, String volume, int powver) {
         super(p_id, p_name, p_brand, price, count);
         this.company = company;
         this.type = type;
@@ -21,6 +21,13 @@ private  int powver;
         this.powver = powver;
     }
 
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
 
     public String getCompany() {
         return company;

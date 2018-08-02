@@ -1,4 +1,4 @@
-@(userForm: Form[detils])
+@(userForm: Form[Detail])
 @import helper._;
 
     <html>
@@ -20,17 +20,19 @@
     <div class="col-md-8">
         <br>
     <table class="tabber  text-canter"  width="100%" border="0.5" >
-@helper.form(action = routes.Application.help_show()) {
+@helper.form(action = routes.Application.help_show(),'enctype->"multipart/form-data") {
 
         <tr><td colspan="2" align="center" valign="middle" bgcolor="black"   >  <h1 style="color: ivory; "> เพิ่มข้อมูล  </h1> </td></tr>
 
 
         <tr><td width="20%" align="center" scope="col" > รหัสสินค้า </td><td> @helper.inputText(userForm("p_id") ,'_label -> "" ) </td></tr>
     <tr class="table-active"> <td width="20%"  scope="col"  align="center"  >ชื่อสินค้า</td> <td> @helper.inputText(userForm("p_name") ,'_label -> " " ) </td></tr>
-    <tr><td width="20%" align="center" scope="col" > แบน </td><td> @helper.inputText(userForm("p_brand") ,'_label -> "" ) </td></tr>
+    <tr><td width="20%" align="center" scope="col" > แบรนด์ </td><td> @helper.inputText(userForm("p_brand") ,'_label -> "" ) </td></tr>
     <tr class="table-active"> <td width="20%"  scope="col"  align="center"  > ราคา </td> <td> @helper.inputText(userForm("price") ,'_label -> " " ) </td></tr>
     <tr > <td width="20%"  scope="col"  align="center"  > จำนวน </td> <td> @helper.inputText(userForm("count") ,'_label -> " " ) </td></tr>
     <tr class="table-active"> <td width="20%"  scope="col"  align="center"  > บริษัท </td> <td> @helper.inputText(userForm("company") ,'_label -> " " ) </td></tr>
+    <tr > <td width="20%"  scope="col"  align="center"  > Barcode </td> <td> @helper.inputText(userForm("barcode") ,'_label -> " " ) </td></tr>
+    <tr class="table-active"> <td width="20%"  scope="col"  align="center"  > พลังงาน แคลอรี่  </td> <td> @helper.inputText(userForm("powver") ,'_label -> " " ) </td></tr>
 
     <tr > <td width="20%"  scope="col"  align="center"  > ประเภศ </td> <td> @select(
         field = userForm("type"),
@@ -45,7 +47,9 @@
     ) </td></tr>
 
 
-    <tr><td>   </td><td> <input type="submit" class="btn btn-dark"  >  <input type="reset" class="btn btn-warning"  >  </td></tr>
+<tr class="table-active" ><td align="center">  รูปสินค้า </td> <td>  @inputFile(userForm("pic"),'_label->" " ,'accept->"image/*"  )  </td></tr>
+
+    <tr><td>   </td><td> <input type="submit" class="btn btn-dark"  >   <input type="reset" class="btn " value="Reset"> </td></tr>
         }
 
         </table>

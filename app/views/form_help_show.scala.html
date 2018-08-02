@@ -1,4 +1,4 @@
-@(product:products)
+@(product:List[Detail])
 
 <html>
     <head>
@@ -6,8 +6,22 @@
     </head>
 
     <body>
-        @product.getP_id()
+        @for(pro<-product) {
+            @pro.getP_id() <br>
+            @pro.getP_name() <br>
+            @pro.getPic <br>
+            @pro.getBarcode <br>
+            @pro.getPowver <br>
+            @pro.getP_name() <br>
+            @pro.getP_id() <br>
+            @pro.getP_name() <br>
+            @pro.getP_id() <br>
+            @pro.getP_name() <br>
 
+                <img src="/assets/images/detil/@pro.getPic()" class="img-thumbnail" width="100px" height="100px">
+
+        }
+        <br> ------------------ <br>
     </body>
 
 </html>

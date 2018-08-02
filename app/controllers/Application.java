@@ -1,25 +1,29 @@
 package controllers;
 
 import models.products;
-import models.detils;
-import play.*;
+import models.Detail;
+import play.Play;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.*;
 
 import views.html.*;
-import play.api.data.validation.Constraints.*;
 
-import javax.persistence.criteria.From;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application extends Controller {
 
     public static products productss;
-    public static detils detilss;
+    public static Detail detail;
     public static String name;
     public static products cpu;
     public static Form<products> product_from = Form.form(products.class);
-    public static Form<detils> detil = Form.form(detils.class);
+    public static List<Detail> detailList = new ArrayList<Detail>();
+    public static Form<Detail> detailForm = Form.form(Detail.class);
+    public static String comPicPath = Play.application().configuration().getString("com_pic_path");
+
 
     public static Result index() {
 
@@ -75,26 +79,43 @@ public class Application extends Controller {
     }
 
     public static Result help_in() {
-        detil = Form.form(detils.class);
-        return ok(form_help.render(detil));
+        detailForm = Form.form(Detail.class);
+        return ok(form_help.render(detailForm));
 
     }
 
     public static Result help_show() {
 
-        Form<detils> Newdetil = detil.bindFromRequest();
+        Form<Detail> newDetailForm = detailForm.bindFromRequest();
 
-        if (Newdetil.hasErrors()) {
+        Http.MultipartFormData body = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart picture = body.getFile("pic");
+        if (newDetailForm.hasErrors()) {
 
-            return ok(form_help.render(Newdetil));
+            return ok(form_help.render(newDetailForm));
         } else {
-            detilss = Newdetil.get();
-            return ok(form_help_show.render(detilss));
-        }
+
+
+            String fileName, contentType;
+
+            if (picture != null) {
+
+                File file = picture.getFile();
+                fileName = picture.getFilename();
+
+                detail = newDetailForm.get();
+                fileName = detail.getP_id() + fileName.substring(fileName.lastIndexOf("."));
+                file.renameTo(new File(comPicPath, fileName));
+                detail.setPic(fileName);
+                detailList.add(detail);
+
+            }
+
+            return ok(form_help_show.render(detailList));
 
         }
 
 
-
+    }
 
 }
