@@ -1,0 +1,63 @@
+@(userForm: Form[detils])
+@import helper._;
+
+    <html>
+        <head>
+
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+                <!-- Bootstrap CSS -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+            <title>Panuwat.com</title>
+        </head>
+        <body>
+ @main()
+
+<div class="row">
+   <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <br>
+    <table class="tabber  text-canter"  width="100%" border="0.5" >
+@helper.form(action = routes.Application.help_show()) {
+
+        <tr><td colspan="2" align="center" valign="middle" bgcolor="black"   >  <h1 style="color: ivory; "> เพิ่มข้อมูล  </h1> </td></tr>
+
+
+        <tr><td width="20%" align="center" scope="col" > รหัสสินค้า </td><td> @helper.inputText(userForm("p_id") ,'_label -> "" ) </td></tr>
+    <tr class="table-active"> <td width="20%"  scope="col"  align="center"  >ชื่อสินค้า</td> <td> @helper.inputText(userForm("p_name") ,'_label -> " " ) </td></tr>
+    <tr><td width="20%" align="center" scope="col" > แบน </td><td> @helper.inputText(userForm("p_brand") ,'_label -> "" ) </td></tr>
+    <tr class="table-active"> <td width="20%"  scope="col"  align="center"  > ราคา </td> <td> @helper.inputText(userForm("price") ,'_label -> " " ) </td></tr>
+    <tr > <td width="20%"  scope="col"  align="center"  > จำนวน </td> <td> @helper.inputText(userForm("count") ,'_label -> " " ) </td></tr>
+    <tr class="table-active"> <td width="20%"  scope="col"  align="center"  > บริษัท </td> <td> @helper.inputText(userForm("company") ,'_label -> " " ) </td></tr>
+
+    <tr > <td width="20%"  scope="col"  align="center"  > ประเภศ </td> <td> @select(
+        field = userForm("type"),
+        options = Seq(
+            "Foo" -> "RAM",
+            "Bar" -> "CPU",
+            "Baz" -> "VGA"
+        ),
+        '_default -> "เลือกแระเภศ",'_label -> "",
+        '_disabled -> Seq("FooKey", "BazKey"),
+    'cust_att_name -> "cust_att_value"
+    ) </td></tr>
+
+
+    <tr><td>   </td><td> <input type="submit" class="btn btn-dark"  >  <input type="reset" class="btn btn-warning"  >  </td></tr>
+        }
+
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+
+        </body>
+
+    </html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

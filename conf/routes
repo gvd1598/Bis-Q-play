@@ -7,6 +7,8 @@ GET     /                           controllers.Application.index()
 POST     /p_hows_form                 controllers.Application.p_show_form()
 GET     /P_in_from                         controllers.Application.P_in_from()
 GET     /pomo                         controllers.Application.pomo()
+GET     /help_in                         controllers.Application.help_in()
+POST     /help_show                         controllers.Application.help_show()
 GET     /detil                           controllers.MyCon.detil()
 
 
